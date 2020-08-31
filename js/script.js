@@ -33,9 +33,10 @@
 
 $(document).ready(function(){
     var dataPartenza = moment('2018-01-01');
-    console.log(dataPartenza);
+
+    // console.log(dataPartenza);
     compilaMese(dataPartenza);
-    // compilaGiorni(dataPartenza);
+    compilaFeste(dataPartenza)
 
 
 });
@@ -55,7 +56,7 @@ function compilaMese(data){
             day: addZero(i),
             month: mese,
             year: anno,
-            completeData: anno + "-" + mese + "-" + addZero(i)
+            completeData: anno + "-" + data.format('MM') + "-" + addZero(i)
         }
 
         var html = template(context);
@@ -63,6 +64,32 @@ function compilaMese(data){
 
     };
 
+};
+
+
+function compilaFeste(data) {
+    $.ajax(
+        {
+            url: 'https://flynn.boolean.careers/exercises/api/holidays',
+            method: 'GET',
+            data: {
+                year: data.year(),
+                month: data.month()
+            },
+            success: function(risposta){
+                for (var i = 0; i < risposta.response.length; i++) {
+                    var elenco = $('li[data-data-completa="'+ risposta.response[i].date +'"]');
+                    console.log(elenco);
+                    elenco.append(' - '  + risposta.response[i].name);
+                    elenco.addClass('festa');
+                };
+            },
+            error: function(){
+                alert('errore');
+            }
+
+        }
+    );
 };
 
 

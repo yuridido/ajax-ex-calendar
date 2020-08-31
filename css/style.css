@@ -1,0 +1,8 @@
+.festa {
+    color: red;
+    font-weight: bold;
+}
+
+button,h1 {
+    display: inline-block;
+}
