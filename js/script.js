@@ -101,11 +101,24 @@ function compilaFeste(data) {
                 month: data.month()
             },
             success: function(risposta){
+                // for (var i = 0; i < risposta.response.length; i++) {
+                //     var elenco = $('li[data-data-completa="'+ risposta.response[i].date +'"]');
+                //     console.log(elenco);
+                //     elenco.append(' - '  + risposta.response[i].name);
+                //     elenco.addClass('festa');
+                // };
+
+                // PROVA CON FOR EACH
                 for (var i = 0; i < risposta.response.length; i++) {
-                    var elenco = $('li[data-data-completa="'+ risposta.response[i].date +'"]');
-                    console.log(elenco);
-                    elenco.append(' - '  + risposta.response[i].name);
-                    elenco.addClass('festa');
+                    $('.lista-giorni li').each(function() {
+                        var confronto = $(this).attr('data-data-completa')
+                        if (risposta.response[i].date == confronto) {
+                            $(this).append(' - '  + risposta.response[i].name);
+                            $(this).addClass('festa');
+
+                        }
+                    });
+                    
                 };
             },
             error: function(){
