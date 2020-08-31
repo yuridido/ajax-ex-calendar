@@ -33,7 +33,7 @@
 
 $(document).ready(function(){
     var dataPartenza = moment('2018-01-01');
-    // console.log(dataPartenza);
+    console.log(dataPartenza);
     compilaMese(dataPartenza);
     // compilaGiorni(dataPartenza);
 
@@ -43,13 +43,33 @@ $(document).ready(function(){
 
 // FUNZIONI
 function compilaMese(data){
-    var mese = data.format('MMMM');
-    var anno = data.format('YYYY');
-    $('.mese').html(mese + " " + anno);
+    mese = data.format('MMMM');
+    anno = data.format('YYYY');
+    // inserisco mese ed anno nell'intestazione
+    $('h1.mese').html(mese + " " + anno);
+    //inserisco i giorni con un ciclo
+    for (var i = 1; i <= data.daysInMonth(); i++) {
+        var source = $("#entry-list").html();
+        var template = Handlebars.compile(source);
+        var context = {
+            day: addZero(i),
+            month: mese,
+            year: anno,
+            completeData: anno + "-" + mese + "-" + addZero(i)
+        }
+
+        var html = template(context);
+        $('.lista-giorni').append(html);
+
+    };
+
 };
 
-// var source = $("#entry-list").html();
-// var template = Handlebars.compile(source);
-//
-// var context = ;
-// var html = template(context);
+
+function addZero(n) {
+    if (n < 10) {
+        return "0" + n;
+    } else {
+        return n;
+    }
+}
