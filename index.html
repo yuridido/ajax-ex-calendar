@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://momentjs.com/downloads/moment.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw==" crossorigin="anonymous"></script>
+        <title></title>
+    </head>
+    <body>
+        <div class="container">
+            <button id="prev" type="button" name="button"><<</button>
+            <h1 class="mese" data-this-time="2018-01-01"></h1>
+            <button id="next" type="button" name="button">>></button>
+
+            <ul class="lista-giorni">
+
+            </ul>
+
+        </div>
+
+
+
+        <script id="entry-list" type="text/x-handlebars-template">
+            <li data-data-completa="{{completeData}}">{{day}} {{month}}</li>
+        </script>
+
+        <script src="js/script.js" charset="utf-8"></script>
+    </body>
+</html>
