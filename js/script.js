@@ -42,12 +42,23 @@ $(document).ready(function(){
         if (dataUsata.format('MM') != 11) {
             var dataAttuale = dataUsata.format('YYYY-MM-DD');
             dataUsata = moment(dataAttuale).add(1, 'M');
-            console.log(dataUsata);
             $('.lista-giorni').html('');
             compilaMese(dataUsata);
             compilaFeste(dataUsata);
         } else {
             alert('il 2019 è vicino al 2020, chi te lo fa fare...');
+        }
+    });
+
+    $('#prev').click(function() {
+        if (dataUsata.format('MM') != 01) {
+            var dataAttuale = dataUsata.format('YYYY-MM-DD');
+            dataUsata = moment(dataAttuale).subtract(1, 'M');
+            $('.lista-giorni').html('');
+            compilaMese(dataUsata);
+            compilaFeste(dataUsata);
+        } else {
+            alert('2017 non disponibile');
         }
     });
 
