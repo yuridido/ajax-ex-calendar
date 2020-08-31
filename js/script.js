@@ -32,11 +32,24 @@
 
 
 $(document).ready(function(){
-    var dataPartenza = moment('2018-01-01');
+    var dataUsata = moment('2018-01-01');
 
-    // console.log(dataPartenza);
-    compilaMese(dataPartenza);
-    compilaFeste(dataPartenza)
+    console.log(dataUsata);
+    compilaMese(dataUsata);
+    compilaFeste(dataUsata);
+
+    $('#next').click(function() {
+        if (dataUsata.format('MM') != 11) {
+            var dataAttuale = dataUsata.format('YYYY-MM-DD');
+            dataUsata = moment(dataAttuale).add(1, 'M');
+            console.log(dataUsata);
+            $('.lista-giorni').html('');
+            compilaMese(dataUsata);
+            compilaFeste(dataUsata);
+        } else {
+            alert('il 2019 è vicino al 2020, chi te lo fa fare...');
+        }
+    });
 
 
 });
