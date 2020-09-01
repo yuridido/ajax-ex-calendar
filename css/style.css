@@ -1,8 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clearbox {
+    content: "";
+    display: table;
+    clear: both;   
+
+}
+
 .festa {
     color: red;
     font-weight: bold;
 }
 
-button,h1 {
+.container {
+    width: 700px;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.testata {
+    height: 90px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+button {
     display: inline-block;
+}
+
+h1 {
+    width: 300px;
+    line-height: 100px;
+    display: inline-block;
+}
+
+.lista-giorni {
+    width: 700px;
+    list-style: none;
+    /* margin: 0 auto; */
+}
+
+.lista-giorni li {
+    float: left;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    text-align: center;
+
 }
