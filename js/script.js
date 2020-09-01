@@ -39,7 +39,7 @@ $(document).ready(function(){
     compilaFeste(dataUsata);
 
     $('#next').click(function() {
-        if (dataUsata.format('MM') != 11) {
+        if (dataUsata.format('MM') != 12) {
             var dataAttuale = dataUsata.format('YYYY-MM-DD');
             dataUsata = moment(dataAttuale).add(1, 'M');
             $('.lista-giorni').html('');
@@ -118,7 +118,7 @@ function compilaFeste(data) {
 
                         }
                     });
-                    
+
                 };
             },
             error: function(){
